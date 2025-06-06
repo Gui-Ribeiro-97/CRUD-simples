@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tp-gui.css">
+    <title class="titulo">Toyviewer</title>
+</head>
+
+<body>
+
+   <div class="cabecalho"><h1> Ache seu colecionável!</h1></div>
+    
+ 
+     <div class="card">
+        <div class="table">
+       <div class="form-row"> Modelo: <input text="text" id="modelo"> </div>
+       <div class="form-row"> Nome: <input text="text" id="nome"> </div>
+       <div class="form-row"> Preço: <input text="number" id="preco"> </div>
+       <div class="form-row"> Marca: <input text="text" id="marca"> </div>
+       <div class="form-row"> Fornecedor: <input text="text" id="Fornecedor"> </div>
+       <div class="form-row"> Ano: <input text="number" id="ano"></div>
+        </div>
+
+    </div>
+
+    <form> 
+
+    <div class="card-dois">
+       <button id="gravar">Gravar</button>
+    
+       <button id="listar">Listar</button>
+       
+       <button id="limpar">Limpar</button>
+       
+    </div>
+
+    </form>
+    
+    <div id="resultadoconsulta"></div>
+
+</body>
+
+</html>
+
+<script>
+    var colecionavel
+    colecionavel = [
+        {modelo:"estatueta",nome:"clothmyth",preco:250, marca:"Bandai",fornecedor:"Asia Co.INC",ano:"1988"},
+        {modelo:"Tazo",nome:"Tazos",preco:2, marca:"elmachips",fornecedor:"Pepsico",ano:"2000"}
+    ]
+    alert
+
+    document.body.onload = function() {
+        colecionavel = JSON.parse(localStorage.getItem("vetorcolecionavel"))
+    }
+
+    limpar.onclick = function() {
+        if (confirm("confirmar a exclusão dos dados?")) {
+            localStorage.clear()
+        }
+    }
+
+    listar.onclick = function() {
+       /* while (resultadoconsulta.hasChildNodes()) {
+
+            resultadoconsulta.removechild(resultadoconsulta.firstChild)
+        }*/
+
+        var x = 0
+        while (x < colecionavel.length)
+        {
+        var novoParagrafo = document.createElement('p')
+        novoParagrafo.textContent = colecionavel[x].modelo
+        resultadoconsulta.appendChild(novoParagrafo)
+        x++
+        }
+    }
+
+    /*gravar.onclick = function() {
+
+    }
+
+    formcolecionavel.onsubmit = function(e) {
+        e.preventDefault()
+
+        var vmodelo, vnome, vpreco,vmarca,vfornecedor,vano
+        vmodelo = modelo.value
+        vnome = nome.value
+        vpreco = preco.value
+        vmarca = marca.value
+        vfornecedor = fornecedor.value
+        vano = ano.value
+
+        var json = {modelo: vmodelo, nome: vnome, preco: vpreco, marca:vmarca, fornecedor:vfornecedor, ano:vano}
+
+        colecionavel.push(json)
+        var vetorcomostring = JSON.stringify(colecionavel)
+        localStorage.setItem("vetorcolecionavel", vetorcomostring)
+        modelo.value = ""
+        nome.value = ""
+        preco.value = ""
+        marca.value = ""
+        fornecedor.value = ""
+        ano.value = ""
+    }*/
+</script>
